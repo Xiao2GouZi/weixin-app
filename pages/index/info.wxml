@@ -13,7 +13,7 @@ indicator-active-color="#fff" indicator-dots circular autoplay>
 </swiper>
 <view class="content-info-portal"> 
   <view>
-   <image src="/images/o4.png" />
+   <image src="/images/o4 .png" />
   <text>私人 FM</text>
 </view>
 <view>

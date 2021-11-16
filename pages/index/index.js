@@ -5,16 +5,16 @@ Page({
         tab: 0,
         playlist: [{
             id: 1, title: '钢琴协奏曲',singer: '肖邦',
-            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover(1).jpg'
+            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
     }, {
             id: 2,title: '奏鸣曲', singer: '莫扎特',
-            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover(1).jpg'
+            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
         }, {
             id: 2,title: '欢乐颂', singer: '贝多芬',
-            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover(1).jpg'
+            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
         }, {
             id: 2,title: '爱之梦', singer: '奈斯特',
-            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover(1).jpg'
+            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
         }],
         state: 'pause',
         playIndex: 0,
@@ -24,7 +24,7 @@ Page({
             percent: 0,
             title: '',
             singer: '',
-            coverImgUrl:'/images/cover(1).jpg',
+            coverImgUrl:'/images/cover (1).jpg',
         }
     },
     play:function() {
