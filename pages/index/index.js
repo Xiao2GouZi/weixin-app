@@ -7,7 +7,7 @@ Page({
             id: 1, title: '钢琴协奏曲',singer: '肖邦',
             src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
     }, {
-            id: 2,title: '奏鸣曲', singer: '莫扎特',
+            id: 2,title: '奏鸣曲123', singer: '莫扎特',
             src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
         }, {
             id: 2,title: '欢乐颂', singer: '贝多芬',
