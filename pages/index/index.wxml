@@ -31,9 +31,10 @@
   <!-- 播放 -->
   <image src="/images/02.png"/>
   <!-- 下一曲 -->
-  <image src="/images/03.png"/>
+  <image src="/images/03.png" bindtap="next" />
   </view>
-</view><!-- 底部播放器-->
+</view>
+<!-- 底部播放器-->
 <view class="player">
   <image class="player-cover" src="{{play.coverImgUrl}}" />
   <view class="player-info">
@@ -42,9 +43,10 @@
   </view>
   <view class="player-controls">
   <!-- 切换到播放列表 -->
-  <image src="/images/01.png" bindtap="changePage"data-page="2" />
+  <image src="/images/01.png" bindtap="changePage" data-page="2" />
   <!-- 播放 -->
-
+  <image wx:if="{{state=='pause'}}" src="/images/02.png" bindtap="play" />
+  <image wx:else src="/images/02stop.png" bindtap="pause" />
   <!-- 下一曲 -->
   <image src="/images/03.png" bindtap="next"/>
   </view>

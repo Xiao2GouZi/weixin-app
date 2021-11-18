@@ -4,17 +4,17 @@ Page({
         item: 0,
         tab: 0,
         playlist: [{
-            id: 1, title: '钢琴协奏曲',singer: '肖邦',
-            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
-    }, {
-            id: 2,title: '奏鸣曲123', singer: '莫扎特',
-            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
-        }, {
+            id: 1, title: '钢琴协奏曲', singer: '肖邦',
+            src: 'http://localhost.1mp3', coverImgUrl:'/images/cover (1).jpg'
+    },  {
+            id: 2,title: '奏鸣曲', singer: '莫扎特',
+            src: 'http://localhost.1mp3', coverImgUrl:'/images/cover (1).jpg'
+    },  {
             id: 2,title: '欢乐颂', singer: '贝多芬',
-            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
-        }, {
-            id: 2,title: '爱之梦', singer: '奈斯特',
-            src: 'http://localhost.1mp3',coverImgUrl:'/images/cover (1).jpg'
+            src: 'http://localhost.1mp3', coverImgUrl:'/images/cover (1).jpg'
+    },  {
+            id: 2,title: '爱之梦', singer: '李斯特',
+            src: 'http://localhost.1mp3', coverImgUrl:'/images/cover (1).jpg'
         }],
         state: 'pause',
         playIndex: 0,
@@ -52,6 +52,31 @@ Page({
         'play.percent': 0
         })
     },
+    onReady: function() {
+        this.audioCtx = wx. createInnerAudioContext()
+        var that = this
+        this.audioCtx.onError(function() {
+            console.log('播放失败：'+ that.audioCtx.src)
+        })
+        this.audioCtx.onEnded(function() {
+            that.next()
+        })
+        this.audioCtx.onPlay(function() {})
+        this.audioCtx.onTimeUpdate (function() {
+            this.setData({
+                'play.duration': formatTime(that.audioCtx.duration),
+                'playcurrentTime': formatTime (that.audioCtx.currentTime),
+                'play.percent': that.audioCtx.currentTime /
+                                that.audioCtx.duration * 100
+             })
+            })
+            this.setMusic(0)
+            function formatTime(time) {
+                var minute = Math.floor(time /60) % 60;
+                var second = Math.floor(time) % 60
+                return (minute < 10 ? '0'+ minute : minute) + ':' + (second < 10 ? '0'+ second :second)
+            }
+        },
     changeItem: function (e)  {
         this.setData ({
             item:  e.target.dataset.item
@@ -62,13 +87,17 @@ Page({
             tab:  e.detail.current
         })
     },
-    next: function(){
+    next: function()  {
         var index =this.data.playIndex >= this.data.playlist.length - 1?
-                   0  :this.data.playIndex + 1
+                   0  :  this.data.playIndex  +  1
         this.setMusic(index)
         if (this.data.state === 'running') {
             this.play()
         }
+   },
+   sliderChange: function(e)  {
+       var second =e.detail.value * this.audioCtx.duration / 100
+       this.audioCtx.seek(second)
    },
     
     /**

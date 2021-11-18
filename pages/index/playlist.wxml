@@ -1,3 +1,15 @@
 <view style="background: #eee; color: #000; height: 100%">
  playlist
  </view>
+ <scroll-view class="content-playlist" scroll-y>
+  <view class="playlist-item" wx:for="{{playlist}}" wx:key="id" bindtap="change" data-index="{{index}}">
+   <image class="playlist-cover" src="{{item.coverImgurl}}"/>
+   <view class="playlist-info">
+    <view class="playlist-info-title">{{item.title}}</view>
+    <view class="playlist-info-singer">{{item.singer}}</view>
+  </view>
+  <view class="palylist-controls">
+        <text wx:if="{{index==palyIndex}}">正在播放</text>
+      </view>
+    </view>
+ </scroll-view>
